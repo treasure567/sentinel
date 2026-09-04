@@ -1,0 +1,27 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# runtime artefacts
+*.jsonl
+*.db
+*.db-journal
+sentinel.db*
+
+# node
+node_modules/
+dist/
+.vite/
+
+# env / editors
+.env
+.env.local
+.DS_Store
+.idea/
+.vscode/
+
+# local scratch
+_to_delete/
+push.sh
