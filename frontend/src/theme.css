@@ -1,0 +1,101 @@
+/* Sentinel design system — light, clean, 4 colours (navy + red/amber/green). No purple, no gradients. */
+:root{
+  --ink:#1b2a41;        /* primary navy */
+  --ink-2:#2c4a73;      /* secondary slate-blue */
+  --muted:#6b7688;      /* muted text */
+  --faint:#9aa4b4;      /* faintest text */
+  --page:#f4f6f9;       /* app background */
+  --card:#ffffff;       /* surfaces */
+  --line:#e4e8ef;       /* hairline */
+  --line-2:#eef1f6;     /* softest divider */
+  --sidebar:#12203a;    /* dark navy rail */
+  --sidebar-2:#1b3255;
+  --red:#c0392b; --amber:#e0982f; --green:#2a9d8f;
+  --red-w:#fbeae7; --amber-w:#fbf1e0; --green-w:#e2f3f0;
+  --red-b:#eec7c1; --amber-b:#f2ddb5; --green-b:#bfe4dd;
+  --radius:10px;
+  --shadow:0 1px 2px rgba(27,42,65,.05), 0 4px 14px rgba(27,42,65,.05);
+  --mono:"SFMono-Regular",ui-monospace,"Roboto Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body,#root{margin:0;height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- app shell ---------- */
+.app{display:grid;grid-template-columns:216px 1fr;min-height:100vh}
+.rail{background:var(--sidebar);color:#c9d4e6;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.rail .logo{display:flex;align-items:center;gap:10px;padding:18px 18px 16px}
+.rail .logo .mk{width:28px;height:28px;border-radius:7px;background:#fff;display:flex;align-items:center;justify-content:center}
+.rail .logo .mk svg{width:17px;height:17px}
+.rail .logo b{color:#fff;font-size:15px;font-weight:650;letter-spacing:.2px}
+.rail .logo span{display:block;font-size:10px;color:#7f92b0;margin-top:1px}
+.rail nav{display:flex;flex-direction:column;padding:8px 10px;gap:2px}
+.rail nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#aab8d0;font-size:13.5px;font-weight:500}
+.rail nav a svg{width:16px;height:16px;opacity:.85}
+.rail nav a:hover{background:var(--sidebar-2);color:#e7edf7}
+.rail nav a.active{background:#25406a;color:#fff}
+.rail nav a .count{margin-left:auto;font-family:var(--mono);font-size:11px;background:var(--red);color:#fff;padding:1px 7px;border-radius:10px}
+.rail .foot{margin-top:auto;padding:14px 16px;font-size:10.5px;color:#63769a;line-height:1.5}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.topbar .title{font-size:15px;font-weight:650}
+.topbar .title small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:1px}
+.topbar .right{display:flex;align-items:center;gap:14px}
+.clock{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.btns{display:flex;gap:8px}
+button{font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:8px;transition:all .12s}
+button:hover{border-color:var(--ink-2)}
+button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+button.primary:hover{background:#25395a}
+button.ghost{color:var(--muted)}
+button:disabled{opacity:.5;cursor:default}
+button:active{transform:translateY(1px)}
+.content{padding:20px 22px 32px;max-width:1480px}
+
+/* ---------- cards ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 11px}
+.card .hd h3{font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--muted)}
+.card .hd .meta{font-size:12px;color:var(--faint)}
+.card .bd{padding:0 16px 16px}
+.grid{display:grid;gap:16px}
+
+/* ---------- badges / pills ---------- */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 8px;border-radius:5px;border:1px solid transparent}
+.badge.Critical,.badge.malicious{background:var(--red-w);color:var(--red);border-color:var(--red-b)}
+.badge.High,.badge.Elevated,.badge.elevated{background:var(--amber-w);color:var(--amber);border-color:var(--amber-b)}
+.badge.Normal,.badge.benign,.badge.Contained,.badge.healthy{background:var(--green-w);color:var(--green);border-color:var(--green-b)}
+.badge.Open{background:var(--amber-w);color:var(--amber);border-color:var(--amber-b)}
+.badge.Closed{background:var(--line-2);color:var(--muted)}
+.badge.dot::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;padding:9px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line-2)}
+tr:last-child td{border-bottom:none}
+tr.click{cursor:pointer}
+tr.click:hover td{background:#fafbfd}
+
+/* ---------- misc ---------- */
+.kv{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;font-size:13px}
+.kv .k{color:var(--muted)}
+.kv .v{font-weight:500}
+.pagehd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+.pagehd h1{font-size:22px;font-weight:680}
+.pagehd p{color:var(--muted);font-size:13px;margin-top:3px}
+.back{color:var(--ink-2);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px;margin-bottom:12px}
+.back:hover{text-decoration:underline}
+.empty{color:var(--faint);text-align:center;padding:34px;font-size:13px}
+.alarm-banner{display:flex;align-items:center;gap:10px;background:var(--red-w);border:1px solid var(--red-b);color:var(--red);font-weight:600;font-size:13px;padding:11px 15px;border-radius:9px;margin-bottom:14px}
+.alarm-banner .bd2{width:9px;height:9px;border-radius:50%;background:var(--red);animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.legend{display:flex;gap:20px;justify-content:center;align-items:center;padding:12px;border-top:1px solid var(--line-2);font-size:12px;color:var(--muted)}
+.legend .it{display:flex;align-items:center;gap:6px}
+.legend .sw{width:9px;height:9px;border-radius:50%}
+.scroll{overflow:auto}
