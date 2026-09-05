@@ -1,0 +1,3 @@
+# The backend needs only numpy. Everything else (the web server, SQLite,
+# the hash-chained audit log) uses the Python standard library.
+numpy>=1.23
